@@ -2,7 +2,16 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+//Variables
+$primary-color: #00a4e4;
+$success-color: #00c300;
+$danger-color: #ec1c24;
+$dark-color: #231f20;
+$light-color: #d7d7d8;
+$danger-color: #ff3d00;
 
 body {
     font-family: "Dosis", sans-serif;
@@ -16,8 +25,83 @@ textarea {
     outline: none;
 }
 
-h1 {
-    text-align: center;
-    color: blueviolet;
-    font-weight: 400;
+.app {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 1em;
+    .getCode {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .card {
+            background-color: #eee;
+            border: 2px solid #ddd;
+            padding: 1em;
+            border-radius: 5px;
+            .card__des {
+                color: green;
+            }
+        }
+    }
+}
+
+// Form Component
+.form {
+    .form__item {
+        margin-bottom: 1em;
+        .form__label {
+            color: $success-color;
+            display: block;
+            padding: 0.25em 0;
+        }
+        .form__input {
+            width: 100%;
+            padding: 0.5em;
+            resize: none;
+            color: rgba($dark-color, 0.8);
+            border: 1px solid #aaa;
+            &:hover,
+            &:focus {
+                border-color: $success-color;
+            }
+        }
+        textarea.form__input {
+            height: 100px;
+        }
+    }
+}
+
+// Btn Component
+.btn {
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    border-radius: 3px;
+    transition: 0.5s;
+    &.btn_success {
+        background-color: $success-color;
+        color: #fff;
+        &:hover {
+            background-color: rgba($success-color, 0.8);
+        }
+    }
+    &.btn_primary {
+        background-color: $primary-color;
+        color: #fff;
+        &:hover {
+            background-color: rgba($primary-color, 0.8);
+        }
+    }
+    &.btn_dark {
+        background-color: $dark-color;
+        color: #fff;
+        &:hover {
+            background-color: rgba($dark-color, 0.9);
+        }
+    }
+    &.btn_block {
+        width: 100%;
+    }
 }

@@ -1,10 +1,12 @@
 import React from "react";
 import "./App.scss";
 
+import GetCode from "./components/GetCode";
+
 const App = () => {
     return (
-        <div>
-            <h1>Hello World!</h1>
+        <div className="app">
+            <GetCode />
         </div>
     );
 };
