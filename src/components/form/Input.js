@@ -20,7 +20,9 @@ const Input = ({ type, name, value, handleChange, labelText }) => {
 Input.propTypes = {
     type: PropTypes.string,
     value: PropTypes.string,
-    handleChange: PropTypes.func
+    handleChange: PropTypes.func,
+    name: PropTypes.string,
+    labelText: PropTypes.string
 };
 
 export default Input;

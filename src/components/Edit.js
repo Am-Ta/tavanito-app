@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import Input from "./form/Input";
 import Button from "./form/Button";
@@ -69,11 +70,17 @@ const Edit = ({ current, updateUser }) => {
                         type="submit"
                         value="Edit"
                         icon={<i className="fas fa-check"></i>}
+                        className="btn btn_success"
                     />
                 </form>
             </div>
         )
     );
+};
+
+Edit.propTypes = {
+    current: PropTypes.object,
+    updateUser: PropTypes.func
 };
 
 const mapStateToProps = state => ({

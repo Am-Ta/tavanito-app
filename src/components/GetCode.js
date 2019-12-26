@@ -34,6 +34,7 @@ const GetCode = ({ code, getOTPCode }) => {
                         type="submit"
                         value="Get Code"
                         icon={<i className="fas fa-check"></i>}
+                        className={"btn btn_primary"}
                     />
                 </form>
             )}

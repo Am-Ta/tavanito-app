@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import Input from "./form/Input";
 import Button from "./form/Button";
@@ -36,6 +37,7 @@ const Login = ({ mobile, user, loginWithOTP }) => {
                             type="submit"
                             value="Login"
                             icon={<i className="fas fa-check"></i>}
+                            className="btn btn_primary"
                         />
                     </form>
                 )}
@@ -44,8 +46,13 @@ const Login = ({ mobile, user, loginWithOTP }) => {
     );
 };
 
+Login.propTypes = {
+    mobile: PropTypes.string,
+    user: PropTypes.object,
+    loginWithOTP: PropTypes.func
+};
+
 const mapStateToProps = state => ({
-    code: state.auth.code,
     mobile: state.auth.mobile,
     user: state.auth.user
 });

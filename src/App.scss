@@ -25,14 +25,18 @@ textarea {
     outline: none;
 }
 
+%flex-shared {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .app {
     width: 100vw;
     min-height: 100vh;
     padding: 1em;
     .getCode {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @extend %flex-shared;
         .card {
             background-color: #eee;
             border: 2px solid #ddd;
@@ -43,17 +47,20 @@ textarea {
             }
         }
     }
-    .login,
-    .info {
+    .login {
         padding: 1em;
-        display: flex;
-        justify-content: center;
+        @extend %flex-shared;
     }
     .info {
+        @extend %flex-shared;
+        align-items: flex-start;
         flex-direction: column;
         .info__des {
             margin: 0.5em 0;
         }
+    }
+    .edit {
+        @extend %flex-shared;
     }
 }
 
@@ -117,5 +124,3 @@ textarea {
         width: 100%;
     }
 }
-
-// Info Component
