@@ -6,7 +6,7 @@ import Button from "./form/Button";
 import Card from "./Card";
 
 import { connect } from "react-redux";
-import { getOTPCode } from "../actions/userInfoAction";
+import { getOTPCode } from "../actions/authActions";
 
 const GetCode = ({ code, getOTPCode }) => {
     const [value, setValue] = useState("");
@@ -27,7 +27,7 @@ const GetCode = ({ code, getOTPCode }) => {
                             type="tel"
                             handleChange={handleChange}
                             value={value}
-                            labelText="Get Code"
+                            labelText="Please enter the mobile number"
                         />
                     </div>
                     <Button
@@ -37,20 +37,18 @@ const GetCode = ({ code, getOTPCode }) => {
                     />
                 </form>
             )}
-            {code && <Card message={code.message} />}
+            {code && <Card message={code} />}
         </div>
     );
 };
 
 GetCode.propTypes = {
-    code: PropTypes.shape({
-        message: PropTypes.string
-    }),
+    code: PropTypes.string,
     getOTPCode: PropTypes.func
 };
 
 const mapStateToProps = state => ({
-    code: state.userInfo.code
+    code: state.auth.code
 });
 
 export default connect(mapStateToProps, { getOTPCode })(GetCode);

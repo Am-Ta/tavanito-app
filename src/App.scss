@@ -43,11 +43,18 @@ textarea {
             }
         }
     }
-    .login {
+    .login,
+    .info {
         padding: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .info {
+        flex-direction: column;
+        .info__des {
+            margin: 0.5em 0;
+        }
     }
 }
 
@@ -111,3 +118,5 @@ textarea {
         width: 100%;
     }
 }
+
+// Info Component

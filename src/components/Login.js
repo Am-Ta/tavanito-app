@@ -4,22 +4,24 @@ import Input from "./form/Input";
 import Button from "./form/Button";
 
 import { connect } from "react-redux";
-import { loginWithOTP } from "../actions/userInfoAction";
+import { loginWithOTP } from "../actions/authActions";
 
-const Login = ({ code, mobile, loginWithOTP }) => {
+const Login = ({ mobile, loginWithOTP }) => {
     const [value, setValue] = useState("");
     const handleChange = e => setValue(e.target.value);
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        loginWithOTP(mobile, value);
+        const user = { mobile, value };
+
+        loginWithOTP(user);
         setValue("");
     };
 
     return (
         <div className="login">
-            {code && (
+            {mobile && (
                 <form onSubmit={handleSubmit} className="form">
                     <div className="form__item">
                         <Input
@@ -41,8 +43,8 @@ const Login = ({ code, mobile, loginWithOTP }) => {
 };
 
 const mapStateToProps = state => ({
-    code: state.userInfo.code,
-    mobile: state.userInfo.mobile
+    code: state.auth.code,
+    mobile: state.auth.mobile
 });
 
 export default connect(mapStateToProps, { loginWithOTP })(Login);
