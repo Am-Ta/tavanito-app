@@ -6,7 +6,7 @@ import Button from "./form/Button";
 import { connect } from "react-redux";
 import { loginWithOTP } from "../actions/authActions";
 
-const Login = ({ mobile, loginWithOTP }) => {
+const Login = ({ mobile, user, loginWithOTP }) => {
     const [value, setValue] = useState("");
     const handleChange = e => setValue(e.target.value);
 
@@ -20,31 +20,34 @@ const Login = ({ mobile, loginWithOTP }) => {
     };
 
     return (
-        <div className="login">
-            {mobile && (
-                <form onSubmit={handleSubmit} className="form">
-                    <div className="form__item">
-                        <Input
-                            type="tel"
-                            handleChange={handleChange}
-                            value={value}
-                            labelText="Please enter the code:"
+        !user && (
+            <div className="login">
+                {mobile && (
+                    <form onSubmit={handleSubmit} className="form">
+                        <div className="form__item">
+                            <Input
+                                type="tel"
+                                handleChange={handleChange}
+                                value={value}
+                                labelText="Please enter the code:"
+                            />
+                        </div>
+                        <Button
+                            type="submit"
+                            value="Login"
+                            icon={<i className="fas fa-check"></i>}
                         />
-                    </div>
-                    <Button
-                        type="submit"
-                        value="Login"
-                        icon={<i className="fas fa-check"></i>}
-                    />
-                </form>
-            )}
-        </div>
+                    </form>
+                )}
+            </div>
+        )
     );
 };
 
 const mapStateToProps = state => ({
     code: state.auth.code,
-    mobile: state.auth.mobile
+    mobile: state.auth.mobile,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps, { loginWithOTP })(Login);

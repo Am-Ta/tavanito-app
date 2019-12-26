@@ -5,7 +5,10 @@ import {
     CODE_ERROR,
     USER_LOADED,
     USER_LOADING,
-    AUTH_ERROR
+    AUTH_ERROR,
+    SET_CURRENT,
+    UPDATE_USER,
+    UPDATE_ERROR
 } from "../actions/types";
 
 const initialState = {
@@ -15,7 +18,8 @@ const initialState = {
     token: null,
     isAuthenticated: null,
     isLoading: false,
-    user: null
+    user: null,
+    current: null
 };
 
 export default (state = initialState, action) => {
@@ -47,6 +51,17 @@ export default (state = initialState, action) => {
                 isAuthenticated: true,
                 isLoading: false,
                 error: null
+            };
+        case SET_CURRENT:
+            return {
+                ...state,
+                current: action.payload
+            };
+        case UPDATE_USER:
+            return {
+                ...state,
+                user: action.payload,
+                current: null
             };
         case CODE_ERROR:
         case LOGIN_FAIL:

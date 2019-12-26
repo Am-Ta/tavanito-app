@@ -1,12 +1,13 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-const Input = ({ type, value, handleChange, labelText }) => {
+const Input = ({ type, name, value, handleChange, labelText }) => {
     return (
         <Fragment>
             <label>{labelText}</label>
             <input
                 type={type}
+                name={name}
                 value={value}
                 onChange={handleChange}
                 className="form__input"
